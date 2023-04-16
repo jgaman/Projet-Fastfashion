@@ -69,5 +69,5 @@ class ClothingDataset:
         df.to_csv(filename, index=False)
 
 
-# Exemple d'utilisation pour générer 50 items et enregistrer le fichier CSV
+
 
