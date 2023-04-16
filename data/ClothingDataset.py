@@ -16,8 +16,10 @@ class ClothingDataset:
     
     def __init__(self, num_items):
         self.num_items = num_items
-        self.materials = ['coton biologique', 'lin', 'lyocell', 'laine mérinos', 'cuir végétalien', 'soie sauvage', 'chanvre biologique']
-        self.manufacturing_plants = ['Patagonia', 'Eileen Fisher', 'Outerknown', 'Everlane', 'Alternative Apparel', 'People Tree', 'Prana', 'Thought', 'Kowtow', 'Reformation']
+        self.materials = ['coton biologique', 'lin', 'lyocell', 'laine mérinos',
+                      'cuir végétalien', 'soie sauvage', 'chanvre biologique']
+        self.manufacturing_plants = ['Patagonia', 'Eileen Fisher', 'Outerknown', 'Everlane',
+                                 'Alternative Apparel', 'People Tree', 'Prana', 'Thought', 'Kowtow', 'Reformation']
         self.carbon_footprint_range = (0.2, 2.5)  # en kgCO2e
         self.descriptions = [
             "Pull en laine mérinos biologique à col rond pour femmes",
@@ -40,21 +42,26 @@ class ClothingDataset:
             "Chemise en chambray de coton biologique pour hommes",
             "Sweat-shirt en polyester recyclé pour femmes",
             "Veste en jean recyclé pour hommes"
-        ]
+    ]
         self.items = self.generate_items()
-    
-    def generate_items(self):
-        items = []
-        for i in range(self.num_items):
-            item = {}
-            item['description'] = random.choice(self.descriptions)
-            item['material'] = random.choice(self.materials)
-            item['manufacturing_plant'] = random.choice(self.manufacturing_plants)
-            item['manufacturing_time'] = random.randint(1, 15)   # en minutes
-            item['carbon_footprint'] = round(random.uniform(*self.carbon_footprint_range), 2)
-            items.append(item)
-        return items
 
-    def to_csv(self, filename):
-        df = pd.DataFrame(self.items)
-        df.to_csv(filename, index=False)
+
+def generate_items(self):
+    
+    items = []
+    for i in range(self.num_items):
+        item = {}
+        item['description'] = random.choice(self.descriptions)
+        item['type'] = item['description'].split()[0].lower()
+        item['genre'] = 'homme' if 'homme' in item['description'].split() else 'femme'
+        item['material'] = random.choice(self.materials)
+        item['manufacturing_plant'] = random.choice(self.manufacturing_plants)
+        item['manufacturing_time'] = random.randint(1, 15)   # en minutes
+        item['carbon_footprint'] = round(random.uniform(*self.carbon_footprint_range), 2)
+        items.append(item)
+    return items
+
+
+def to_csv(self, filename):
+    df = pd.DataFrame(self.items)
+    df.to_csv(filename, index=False)

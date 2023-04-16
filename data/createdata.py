@@ -3,7 +3,7 @@ import os
 
 
 # Créer un dataset avec 8000 articles
-dataset = ClothingDataset(num_items=8000)
+dataset = ClothingDataset(num_items=9000)
 
 # Exporter le dataset en CSV dans le dossier 'data'
 file_path = os.path.join('data', 'ethicdata.csv')
