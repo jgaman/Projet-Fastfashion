@@ -11,7 +11,7 @@ class ClothingDataset:
         - carbon_footprint_range: plage de valeurs possibles pour l'empreinte carbone
         - descriptions: liste des descriptions possibles
         - items: liste des items générés
-        - save_to_csv: méthode permettant d'enregistrer le jeu de données dans un fichier CSV
+        - to_csv: méthode permettant d'enregistrer le jeu de données dans un fichier CSV
     """
     
     def __init__(self, num_items):
